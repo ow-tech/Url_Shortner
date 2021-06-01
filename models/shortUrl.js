@@ -3,14 +3,14 @@ const shortId = require('shortid');
 
 // schema  for storing full url & shortcreated url
 const shortUrlShcema = new mongoose.Schema({
-    // column names full, short, clicks
-    full: {
+    // column names long, short, clicks
+    long: {
         type: String,
         required:true
     },
     short:{
         type: String,
-        required: true 
+        required: true,
         default: shortId.generate
     },
     clicks:{
