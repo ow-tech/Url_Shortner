@@ -14,8 +14,7 @@ app.set('view engine', 'ejs')
 
 app.use(express.urlencoded({ extended: true}))
 
-
-
+let dbUri='dbUri'
 // let port = process.env.PORT
 
 mongoose.connect(dbUri,{

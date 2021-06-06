@@ -89,7 +89,7 @@ typings/
 
 # Next.js build output
 .next
-
+backend.js/Uri
 # Nuxt.js build / generate output
 .nuxt
 dist
