@@ -2,6 +2,8 @@ const express = require('express');
 
 const mongoose = require('mongoose');
 
+const env = require('dotenv').config();
+
 const shortUrl =require('./models/shortUrl');
 
 const app = express();
@@ -13,29 +15,12 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true}))
 
 
-// connecting to locohost mongodb database
 
+// let port = process.env.PORT
 
-// mongoose.connect(dbUri,{
-//     useNewUrlParser:true, useUnifiedTopology: true
-// }).then(app.listen(process.env.PORT ||1337))
-const pass='mKfQNAfsg4calfu3'
-const dbUri="mongodb+srv://urlshortneruser:mKfQNAfsg4calfu3@test.tbfhc.mongodb.net/test?retryWrites=true&w=majority"
-
-// async () =>{
-//     await mongoose.connect(dbUri,{
-//     useNewUrlParser:true, useUnifiedTopology: true
-// }).then(res =>{
-//     try {
-//         console.log(res)
-//         }finally{
-//             res.connection.close();
-
-//         }
-// }).then(app.listen(process.env.PORT ||1337))}
 mongoose.connect(dbUri,{
     useNewUrlParser:true, useUnifiedTopology: true
-}).then((res)=> app.listen(3000|| process.env))
+}).then((res)=> app.listen(5000 || process.env))
 .catch((err)=>console.log(err));
 
 // setting up app to use ejs template engine
@@ -72,24 +57,6 @@ app.post('/shortUrls', async (req, res) =>{
    
 })
 
-// app.get('/:shortUrl', async (req, res)=> {
-//     try{
-//         const shortUrl = await shortUrl.findOne({ short:req.params.shortUrl})  
-//         console.log(shorturl)
-//     if(shortUrl == null) return res.sendStatus(404)
-
-//     shortUrl.clicks++
-//     shortUrl.save()
-
-//     res.redirect(shortUrl.long)
-
-//     }
-//     catch (err){
-//         console.log(err.message)
-//     }
-
-  
-// })
 
 app.get('/:clickdurl', async (req, res)=>{
     try {
