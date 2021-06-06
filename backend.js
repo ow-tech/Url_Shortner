@@ -7,16 +7,36 @@ const shortUrl =require('./models/shortUrl');
 const app = express();
 app.set('view engine', 'ejs')
 
+
+
+
 app.use(express.urlencoded({ extended: true}))
 
 
 // connecting to locohost mongodb database
-const pass='CXtq9Jmm8Ffiw9S'
-const dbUri="mongodb://urlshortneruser:CXtq9Jmm8Ffiw9S@alexapp-shard-00-00.tbfhc.mongodb.net:27017,alexapp-shard-00-01.tbfhc.mongodb.net:27017,alexapp-shard-00-02.tbfhc.mongodb.net:27017/urlshortner?ssl=true&replicaSet=atlas-5ye3nl-shard-0&authSource=admin&retryWrites=true&w=majority"
 
+
+// mongoose.connect(dbUri,{
+//     useNewUrlParser:true, useUnifiedTopology: true
+// }).then(app.listen(process.env.PORT ||1337))
+const pass='mKfQNAfsg4calfu3'
+const dbUri="mongodb+srv://urlshortneruser:mKfQNAfsg4calfu3@test.tbfhc.mongodb.net/test?retryWrites=true&w=majority"
+
+// async () =>{
+//     await mongoose.connect(dbUri,{
+//     useNewUrlParser:true, useUnifiedTopology: true
+// }).then(res =>{
+//     try {
+//         console.log(res)
+//         }finally{
+//             res.connection.close();
+
+//         }
+// }).then(app.listen(process.env.PORT ||1337))}
 mongoose.connect(dbUri,{
     useNewUrlParser:true, useUnifiedTopology: true
-}).then(app.listen(process.env.PORT ||1337))
+}).then((res)=> app.listen(3000|| process.env))
+.catch((err)=>console.log(err));
 
 // setting up app to use ejs template engine
 // mongoose.connect('mongodb://localhost/urldb',{
@@ -50,7 +70,6 @@ app.post('/shortUrls', async (req, res) =>{
         console.log(err.message)
     }
    
-
 })
 
 // app.get('/:shortUrl', async (req, res)=> {

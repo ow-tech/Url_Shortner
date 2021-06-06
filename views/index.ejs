@@ -5,12 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <title>Document</title>
+    <title>UrlS</title>
 </head>
-<body>
+<body class="bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">URL SHORTNER</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Home
+                  <span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Login</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-sm-2" type="text" placeholder="Search">
+              <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
     <div class="container">
-        <h1>URL SHORTNER</h1>
-        <!-- form  to handle shortening of urls, input also-->
+                <!-- form  to handle shortening of urls, input also-->
         <form class="my-4 form-inline" action="/shortUrls" method ='POST'>
             <label for="longUrl" class="sr-only">URL</label>
             <input placeholder='Url'type="url" name="longUrl"  class='form-control col mr-2' id="LongUrl">
@@ -19,7 +63,7 @@
 
         <!-- table to handle display list of shortened urls  -->
 
-        <table class="table table-responsive table-striped">
+        <table class=" text-warning table table-responsive table-striped">
             <thead>
                 <tr>
                     <th>Initial URL</th>
@@ -27,11 +71,11 @@
                     <th>clicks</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody >
                 <% shortUrls.forEach(shortUrl => { %>
                     <tr>
-                      <td><a href="<%= shortUrl.long %>"><%= shortUrl.long %></a></td>
-                      <td><a href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
+                      <td ><a class='text-warning'href="<%= shortUrl.long %>"><%= shortUrl.long %></a></td>
+                      <td><a class='text-warning' href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
                       <td><%= shortUrl.clicks %></td>
                     </tr>
                   <% }) %>
